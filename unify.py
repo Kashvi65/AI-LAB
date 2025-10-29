@@ -5,7 +5,6 @@ def is_constant(x):
     return isinstance(x, str) and x[0].isupper()
 
 def occurs_check(var, expr, subst):
-    """Check if var occurs in expr after applying current substitution"""
     if var == expr:
         return True
     elif isinstance(expr, list):
@@ -15,7 +14,6 @@ def occurs_check(var, expr, subst):
     return False
 
 def unify(x, y, subst=None, depth=0):
-    """Main unification function with debug prints"""
     indent = "  " * depth
     if subst is None:
         print(indent + f"Substitution failed.")
@@ -59,10 +57,10 @@ def unify_var(var, x, subst, depth):
         subst[var] = x
         return subst
 
-# Example expressions
 expr1 = ['f', 'X', ['g', 'Y']]
 expr2 = ['f', 'a', ['g', 'b']]
 
 print("Starting Unification:\n")
 result = unify(expr1, expr2, subst={})
 print("\nFinal Unification Result:", result)
+
